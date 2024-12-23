@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    spec: "ingressClassName"
+spec:
+  rules:
+    - host: go-microservices.com
+      http:
+        paths:
+          - path: /user
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: user-srv
+                port:
+                  number: 8080
