@@ -32,8 +32,8 @@ func NewServer(port string) *Server {
 	}
 
 	// Define routes
-	router := s.router.PathPrefix("/").Subrouter()
-	router.HandleFunc("/user/{name}", s.handleIndex).Methods("GET")
+	router := s.router.PathPrefix("/user").Subrouter()
+	router.HandleFunc("/{name}", s.handleIndex).Methods("GET")
 
 	return s
 }
