@@ -16,7 +16,7 @@ type Server struct {
 // handleIndex handles requests to the root ("/") and prints a personalized message.
 func (s *Server) handleIndex(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Fprintf(w, "Hi there, I talk from user %s!", r.URL.Path[1:])
+	fmt.Fprintf(w, "Hi there, I talk from notification %s!", r.URL.Path[1:])
 }
 
 // NewServer creates and returns a new Server instance.
@@ -32,7 +32,7 @@ func NewServer(port string) *Server {
 	}
 
 	// Define routes
-	router := s.router.PathPrefix("/user").Subrouter()
+	router := s.router.PathPrefix("/notification").Subrouter()
 	router.HandleFunc("/{name}", s.handleIndex).Methods("GET")
 
 	return s

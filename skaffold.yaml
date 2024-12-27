@@ -15,5 +15,13 @@ build:
           dest: .
     docker:
       dockerfile: Dockerfile
+  - image: prosenkiewicz/notification
+    context: notification
+    sync:
+      manual:
+        - src: "./notification/**/*.go"
+          dest: .
+    docker:
+      dockerfile: Dockerfile
 deploy:
   kubectl: {}

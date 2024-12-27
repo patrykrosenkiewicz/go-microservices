@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification
+          imagePullPolicy: Never
+          image: prosenkiewicz/notification
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-srv
+spec:
+  selector:
+    app: notification
+  ports:
+    - name: notification
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

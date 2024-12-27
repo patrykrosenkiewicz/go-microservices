@@ -16,3 +16,11 @@ spec:
                 name: user-srv
                 port:
                   number: 8080
+          - path: /notification
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: notification-srv
+                port:
+                  number: 8080
+
