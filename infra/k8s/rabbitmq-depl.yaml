@@ -15,6 +15,9 @@ spec:
       containers:
         - name: rabbitmq
           image: rabbitmq:3-management
+          env:
+            - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+              value: "-rabbitmq_management path_prefix \"/rabbit\""
 ---
 apiVersion: v1
 kind: Service

@@ -23,4 +23,11 @@ spec:
                 name: notification-srv
                 port:
                   number: 8080
+          - path: /rabbit
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: rabbitmq-srv
+                port:
+                  number: 15672
 
