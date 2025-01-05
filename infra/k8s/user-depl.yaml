@@ -16,6 +16,20 @@ spec:
         - name: user
           imagePullPolicy: Never
           image: prosenkiewicz/user
+          env:
+            - name: "RABBITMQ_HOST"
+              value: "rabbitmq-srv"
+            - name: "RABBITMQ_PORT"
+              value: "5672"
+            - name: "RABBITMQ_LOGIN"
+              value: "guest"
+            - name: "RABBITMQ_USER_QUEUE"
+              value: "user-queue"
+            - name: "RABBITMQ_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-password
+                  key: password
 ---
 apiVersion: v1
 kind: Service
